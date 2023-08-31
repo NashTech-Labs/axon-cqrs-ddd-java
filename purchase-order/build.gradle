@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.13'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'maven-publish'
+}
+	group = 'com.nashtech'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation group: 'org.axonframework', name: 'axon-configuration', version: '4.8.0'
+	implementation group: 'org.axonframework', name: 'axon-server-connector', version: '4.8.0'
+	implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: '4.8.0'
+	implementation group: 'org.axonframework', name: 'axon-modelling', version: '4.8.0'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.5'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'org.axonframework', name: 'axon-test', version: '4.8.0'
+	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId = 'com.nashtech'
+			artifactId = 'purchaseorder'
+			version = "0.0-SNAPSHOT"
+			from components.java
+		}
+	}
+	repositories {
+		mavenLocal()
+	}
+}

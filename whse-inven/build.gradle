@@ -1,0 +1,37 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.13'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.nashtech'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	implementation group: 'org.axonframework', name: 'axon-configuration', version: '4.8.0'
+	implementation group: 'org.axonframework', name: 'axon-server-connector', version: '4.8.0'
+	implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: '4.8.0'
+	implementation group: 'org.axonframework', name: 'axon-modelling', version: '4.8.0'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.5'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'org.axonframework', name: 'axon-test', version: '4.8.0'
+	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+	implementation group: 'com.nashtech', name: 'purchaseorder', version: '0.0-SNAPSHOT'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.5'
+	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '23.2.0.0'
+	implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.6.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
